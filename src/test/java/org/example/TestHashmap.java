@@ -1,15 +1,16 @@
 package org.example;
 
-import java.lang.reflect.Array;
+import org.junit.jupiter.api.Test;
+
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class Test {
+public class TestHashmap {
     SolutionHashmap solution = new SolutionHashmap();
 
     // leetcode 383
-    @org.junit.jupiter.api.Test
+    @Test
      void testRansomSuccess() {
         String ransomNote = "aa";
         String magazine = "aab";
@@ -19,7 +20,7 @@ public class Test {
     }
 
     // leetcode 205
-    @org.junit.jupiter.api.Test
+    @Test
     void testIsOmorphicSuccess() {
         String s = "foo";
         String t = "baa";
@@ -27,7 +28,7 @@ public class Test {
         assertTrue(result, "Expected true, but got false");
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void testIsOmorphicFailure() {
         String s = "foo";
         String t = "bad";
@@ -36,7 +37,7 @@ public class Test {
     }
 
     // leetcode 209
-    @org.junit.jupiter.api.Test
+    @Test
     void testWordsPatternSuccess() {
         String pattern = "abba";
         String s = "dog cat cat dog";
@@ -45,7 +46,7 @@ public class Test {
     }
 
     // leetcode 242
-    @org.junit.jupiter.api.Test
+    @Test
     void validAnagramSuccess() {
         String s = "anagram";
         String t = "nagaram";
@@ -54,10 +55,11 @@ public class Test {
     }
 
     // leetcode 49
-    @org.junit.jupiter.api.Test
+    @Test
     void groupAnagramSuccess() {
         String[] s = {"eat","tea","tan","ate","nat","bat"};
         List<List<String>> result = solution.groupAnagrams(s);
+        //List<List<String>> result = solution.groupRe(s);
 
         List<List<String>> expected = Arrays.asList(
                 Arrays.asList("bat"),
@@ -83,7 +85,7 @@ public class Test {
     }
 
     // leetcode 1
-    @org.junit.jupiter.api.Test
+    @Test
     void twoSumSuccess() {
         int nums[] = {2,7,11,15};
         int target = 9;
@@ -93,7 +95,8 @@ public class Test {
 
     }
 
-    @org.junit.jupiter.api.Test
+    // leetcode 202
+    @Test
     void happyNumberSuccess(){
         int n = 19;
         boolean result = solution.happyNumber(n);
@@ -101,5 +104,22 @@ public class Test {
 
     }
 
+    // leetcode 219
+    @Test
+    void containsDuplicateIISuccess() {
+        int[] nums = {1, 2, 3, 1};
+        int k = 3;
+        boolean result = solution.containsDuplicateII(nums, k);
+        assertTrue(result, "Expected true, but got false");
+    }
+
+    // leetcode 128
+    @Test
+    void longestConsecutiveSuccess() {
+        int[] nums = {100, 4, 200, 1, 3, 2};
+        int expected = 4;
+        int result = solution.longestConsecutiveSequence(nums);
+        assertEquals(expected, result, "do not match");
+    }
 
 }
