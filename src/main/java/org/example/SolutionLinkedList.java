@@ -1,5 +1,7 @@
 package org.example;
 
+import java.util.List;
+
 public class SolutionLinkedList {
 
     public class ListNode {
@@ -55,6 +57,111 @@ public class SolutionLinkedList {
     }
 
     // leetcode 21
+    public ListNode mergeTwoSortedList(ListNode list1, ListNode list2) {
+        ListNode dummy = new ListNode(0);
+        ListNode pointer = dummy;
+
+        while (list1 != null && list2 != null) {
+            if (list1.val <= list2.val) {
+                pointer.next = list1;
+                list1 = list1.next;
+            } else {
+                pointer.next = list2;
+                list2 = list2.next;
+            }
+            pointer = pointer.next;
+        }
+
+        if (list1 != null) {
+            pointer.next = list1;
+            list1 = list1.next;
+            pointer = pointer.next;
+        }
+
+        if (list2 != null) {
+            pointer.next = list2;
+            list2 = list2.next;
+            pointer = pointer.next;
+        }
+
+        return dummy.next;
+
+    }
+
+    // leetcode 138
+
+    // leetcode 206
+    public ListNode reverseLinkedList(ListNode head) {
+        ListNode prev = null;
+        while (head != null) {
+            ListNode temp = head.next;
+            head.next = prev;
+            prev = head;
+            head = temp;
+
+        }
+
+        return prev;
+    }
+
+    // leetcode 92
+    public ListNode reverseLinkedListII(ListNode head, int left, int right) {
+        ListNode dummy = new ListNode(-1);
+        dummy.next = head;
+        ListNode prev = dummy;
+        ListNode cur = head;
+
+        int i = 1;
+
+        while ( i < left) {
+            prev = cur;
+            cur = cur.next;
+            i++;
+        }
+
+        ListNode node = prev;
+        while (i++ <= right) {
+            ListNode temp = cur.next;
+            cur.next = prev;
+            prev = cur;
+            cur = temp;
+        }
+
+        node.next.next = cur;
+        node.next = prev;
+
+        return dummy.next;
+    }
+
+    // leetcode 19
+    public ListNode removeNthNode(ListNode head, int n) {
+
+        ListNode dummy = new ListNode(-1);
+        dummy.next = head;
+
+        ListNode fast = dummy;
+        ListNode slow = dummy;
+
+        for (int i = 0; i < n + 1; i++) {
+            fast = fast.next;
+        }
+
+        while (fast != null) {
+            slow = slow.next;
+            fast = fast.next;
+        }
+
+        slow.next = slow.next.next;
+
+        return dummy.next;
+    }
+
+    // leetcode 82
+    public ListNode removeDuplicatesFromSortedListII() {
+
+    }
+
+
 
 
 
